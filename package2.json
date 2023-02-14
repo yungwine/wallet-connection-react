@@ -11,8 +11,10 @@
   "dependencies": {
     "@tanstack/react-query": "^4.3.9",
     "@twa-dev/sdk": "^0.0.11",
+    "ant-design": "^1.0.0",
     "buffer": "^6.0.3",
     "is-mobile": "^3.1.1",
+    "package-json-merge": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.8",

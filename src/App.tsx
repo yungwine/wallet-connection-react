@@ -1,4 +1,5 @@
 import "./App.css";
+import {AuthButton} from "./components/AuthButton/AuthButton";
 import TonConnector from "./components/Ton-Connector";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <h1>Ton Sample TWA</h1>
         <TonConnector />
+          <AuthButton />
       </div>
     </QueryClientProvider>
   );

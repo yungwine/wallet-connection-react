@@ -55,16 +55,13 @@ export default function TonConnector() {
 function _TonConnecterInternal() {
   const connect = useTonhubConnect();
   const isConnected = connect.state.type === "online";
-
   return (
     <>
       {!isConnected && <TonConnect />}
       {isConnected && (
         <div style={{ textAlign: "left", marginBottom: 20 }}>
           <TonWalletDetails />
-          <TransferTon />
-          <Counter />
-          <Jetton />
+
         </div>
       )}
     </>
@@ -80,7 +77,7 @@ function TonConnect() {
   if (connect.state.type === "pending") {
     return (
       <div>
-        {isMobile() && (
+        {(
           <button
             onClick={() => {
               // @ts-ignore
@@ -93,14 +90,7 @@ function TonConnect() {
             Open Tonhub Wallet{" "}
           </button>
         )}
-        {!isMobile() && (
-          <div>
-            Scan with your mobile tonhub wallet:
-            <br />
-            <br />
-            <QRCode value={connect.state.link} />
-          </div>
-        )}
+
       </div>
     );
   }

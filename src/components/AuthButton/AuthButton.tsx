@@ -68,7 +68,7 @@ export function AuthButton() {
 		const universalLink = connector.connect(tonkeeperConnectionSource);
 
 		if (isMobile()) {
-			openLink(addReturnStrategy(universalLink, 'none'), '_blank');
+			openLink(addReturnStrategy(universalLink, 'back'), '_blank');
 			// window.open(universalLink, '_blank');
 			// window.location.href = addReturnStrategy(universalLink, 'none');
 		} else {

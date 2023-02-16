@@ -44,7 +44,7 @@ export default function TonConnector() {
   return (
     <TonhubConnectProvider
       network="mainnet"
-      url="https://ton.org/"
+      url="https://wallet-connection-six.vercel.app/"
       name="Wallet Connection"
       debug={false}
       connectionState={connectionState}
@@ -92,7 +92,7 @@ function TonConnect() {
               openLink(addReturnStrategy(connect.state.link.replace(
                   "ton://",
                   "https://tonhub.com/"
-              ), 'none'), '_blank');
+              ), 'back'), '_blank');
               // window.location.href = connect.state.link.replace(
               //   "ton://",
               //   "https://tonhub.com/"

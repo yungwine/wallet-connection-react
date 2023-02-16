@@ -46,7 +46,7 @@ function App() {
         return (
             <QueryClientProvider client={queryClient}>
                 <div className="App">
-                    <h1>Wallet connection</h1>
+                    <h1>Wallet Connection</h1>
                     <AuthButton />
 
                 </div>
@@ -57,7 +57,7 @@ function App() {
         return (
             <QueryClientProvider client={queryClient}>
                 <div className="App">
-                    <h1>Wallet connection</h1>
+                    <h1>Wallet Connection</h1>
                     <TonConnector/>
                 </div>
             </QueryClientProvider>
@@ -67,7 +67,7 @@ function App() {
         return (
         <QueryClientProvider client={queryClient}>
                 <div className="App">
-                   <h1>Wallet connection</h1>
+                   <h1>Wallet Connection</h1>
                <AuthButton/>
               <TonConnector/>
 

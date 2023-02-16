@@ -4,7 +4,7 @@ import { isMobile, openLink } from './utils';
 
 const dappMetadata = {
 	manifestUrl:
-		'https://gist.githubusercontent.com/yungwine/4fbe2f1369a130dd1cc9716629c65603/raw/c9c7eb443d0cd7e77a542d1f8d159bf9bc8fd6e3/txt',
+		'https://gist.githubusercontent.com/yungwine/4fbe2f1369a130dd1cc9716629c65603/raw/1a4b574b4b326e3f32f110d89b4890b1b28f59da/txt',
 };
 
 export const connector = new TonConnect(dappMetadata);

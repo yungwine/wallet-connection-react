@@ -44,7 +44,7 @@ export default function TonConnector() {
   return (
     <TonhubConnectProvider
       network="mainnet"
-      url="https://wallet-connection-six.vercel.app/"
+      url="https://ton-wallet-connection.vercel.app/"
       name="Wallet Connection"
       debug={false}
       connectionState={connectionState}

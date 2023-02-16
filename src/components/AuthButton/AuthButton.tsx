@@ -1,16 +1,18 @@
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Menu, Modal, notification, Space } from 'antd';
+import { Button, Dropdown, Menu, notification, Space, Modal } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
 import QRCode from 'react-qr-code';
 import { useRecoilValueLoadable } from 'recoil';
-import { addReturnStrategy, connector } from 'src/connector';
-import { useForceUpdate } from 'src/hooks/useForceUpdate';
-import { useSlicedAddress } from 'src/hooks/useSlicedAddress';
-import { useTonWallet } from 'src/hooks/useTonWallet';
-import { useTonWalletConnectionError } from 'src/hooks/useTonWalletConnectionError';
-import { walletsListQuery } from 'src/state/wallets-list';
-import { isDesktop, isMobile, openLink } from 'src/utils';
+import { addReturnStrategy, connector } from '../../connector';
+import { useForceUpdate } from '../../hooks/useForceUpdate';
+import { useSlicedAddress } from '../../hooks/useSlicedAddress';
+import { useTonWallet } from '../../hooks/useTonWallet';
+import { useTonWalletConnectionError } from '../../hooks/useTonWalletConnectionError';
+import { walletsListQuery } from '../../state/wallets-list';
+import { isDesktop, isMobile, openLink } from '../../utils';
 import './style.scss';
+import {TonkeeperWalletDetails} from "../TonkeeperWalletDetails";
+import {TonWalletDetails} from "../TonWalletDetails";
 
 const menu = (
 	<Menu
@@ -67,42 +69,104 @@ export function AuthButton() {
 
 		if (isMobile()) {
 			openLink(addReturnStrategy(universalLink, 'none'), '_blank');
+			// window.open(universalLink, '_blank');
+			// window.location.href = addReturnStrategy(universalLink, 'none');
 		} else {
 			setModalUniversalLink(universalLink);
+			// openLink(addReturnStrategy(universalLink, 'none'), '_blank');
+			// window.location.href = addReturnStrategy(universalLink, 'none');
 		}
 	}, [walletsList]);
+	console.log(modalUniversalLink);
 
-	return (
-		<>
-			<div className="auth-button">
-				{wallet ? (
-					<Dropdown overlay={menu}>
-						<Button shape="round" type="primary">
-							<Space>
-								{address}
-								<DownOutlined />
-							</Space>
-						</Button>
-					</Dropdown>
-				) : (
-					<Button shape="round" type="primary" onClick={handleButtonClick}>
-						Connect Wallet
-					</Button>
-				)}
-			</div>
-			<Modal
-				title="Choose wallet"
-				open={!!modalUniversalLink}
-				onOk={() => setModalUniversalLink('')}
-				onCancel={() => setModalUniversalLink('')}
-			>
+	// // @ts-ignore
+	// let [Connection, SetConnection] = useState<JSON>(JSON.parse(localStorage.getItem("connection")));
+	//
+	// useEffect(() => {
+	// 	// @ts-ignore
+	// 	SetConnection(JSON.parse(localStorage.getItem("connection")));
+	// }, [])
+	//
+	// let connection = JSON.parse(localStorage.getItem("connection"));
+	//
+	// let isConnectedTonhub = connection?.type === "online";
+	//
+	// if (Connection?.type === "online") {
+	// 	return <></>;
+	// }
+
+	if (wallet) {
+		return (
+			<div style={{ textAlign: "left", marginBottom: 20 }}>
+				<TonkeeperWalletDetails />
+			</div>);
+
+	} else {
+		if (modalUniversalLink && !isMobile()) {
+			return (<div>
+				Scan with your mobile Tonkeeper wallet:
+				<br />
 				<QRCode
 					size={256}
-					style={{ height: '260px', maxWidth: '100%', width: '100%' }}
+					style={{ height: '260', maxWidth: '100%', width: '100%' }}
 					value={modalUniversalLink}
 					viewBox={`0 0 256 256`}
 				/>
-			</Modal>
-		</>
-	);
+				{/*<QRCode value={connect.state.link} />*/}
+			</div>);
+		}
+		return (
+			<div>
+				{isMobile() && (
+					<Button shape="round" type="primary" onClick={handleButtonClick}>
+						Connect Tonkeeper
+					</Button>
+				)}
+				{!isMobile() && (
+					<Button shape="round" type="primary" onClick={handleButtonClick}>
+						Connect Tonkeeper
+					</Button>
+				)}
+			</div>
+
+			);
+
+	}
+
+	//
+	// return (
+	// 	<>
+	// 		<div className="button">
+	// 			{wallet ? (
+	// 				<Dropdown overlay={menu}>
+	// 					<Button shape="round" type="primary">
+	// 						<Space>
+	// 							{address}
+	// 							<DownOutlined />
+	// 						</Space>
+	// 					</Button>
+	// 				</Dropdown>
+	// 			) : (
+	// 				<Button shape="round" type="primary" onClick={handleButtonClick}>
+	// 					Connect Tonkeeper
+	// 				</Button>
+	// 			)}
+	// 		</div>
+	// 		<Modal
+	// 			title="Scan with Tonkeeper"
+	// 			open={!!modalUniversalLink}
+	// 			aria-labelledby="modal-modal-title"
+	// 			aria-describedby="modal-modal-description"
+	// 			onOk={() => window.location.reload()}
+	// 			onCancel={() => window.location.reload()}
+	// 		>
+	// 			{/*<QRCode*/}
+	// 			{/*	size={128}*/}
+	// 			{/*	style={{ height: '128', maxWidth: '100%', width: '100%' }}*/}
+	// 			{/*	value={modalUniversalLink}*/}
+	// 			{/*	viewBox={`0 0 256 256`}*/}
+	// 			{/*/>*/}
+	// 		</Modal>
+	// 	</>
+	// );
 }

@@ -6,6 +6,7 @@ import { tc } from "./Ton-Connector";
 
 export function TonWalletDetails() {
   const connect = useTonhubConnect();
+    console.log('state', connect.state);
 
   // @ts-ignore
   const { isLoading, data } = useQuery(
@@ -24,7 +25,7 @@ export function TonWalletDetails() {
 
   return (
     <>
-      <Card title="Wallet">
+      <Card title="TonHub Wallet">
         <div style={{ marginBottom: 20 }}>
           <div
             style={{

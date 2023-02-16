@@ -1,3 +1,5 @@
+/*@import '../node_modules/antd/dist/antd.css';*/
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -25,9 +27,9 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  /* display: flex; */
-  /* place-items: center; */
+  /*margin: 5px;*/
+   display: flex;
+   /*place-items: center;*/
   min-width: 320px;
   min-height: 100vh;
 }
@@ -41,10 +43,12 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  width: 250px;
+  margin: 10px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #00000088;
+  background-color: rgba(0, 0, 0, 0.68);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -59,12 +63,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: rgba(16, 22, 31, 0.26);
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #dadada;
   }
 }

@@ -8,6 +8,7 @@ This project is part of a set of 3 typical repositories needed for a blockchain 
 * Web frontend for interacting with the dapp from a web browser (coming soon)
 * Telegram bot for interacting with the dapp from inside Telegram messenger (this repo)
 
+
 The project is highly-opinionated, and there are many other alternate routes it could have taken. Some examples:
 - Supports only tonhub and its corresponding session mediating library, ton-x. Feel free to contribute support for other wallets!
 - Uses vite with react (alternative to create-react-app)
